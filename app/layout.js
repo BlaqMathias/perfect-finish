@@ -2,7 +2,7 @@
 import './globals.css';
 
 export const metadata = {
-  title:       'Perfec Finish',
+  title:       'Perfect Finish',
   description: 'Premium fragrances and custom scent blends crafted for unforgettable impressions.',
 };
 
