@@ -74,7 +74,7 @@ export default function AdminFragrances() {
 
   return (
     <div>
-      <div style={s.row}>
+      <div className="admin-section-row" style={s.row}>
         <PageHeader title="Fragrances" subtitle={`${items.length} fragrance${items.length !== 1 ? 's' : ''}`} />
         <button onClick={() => setForm({ ...EMPTY })} style={s.addBtn}>+ Add Fragrance</button>
       </div>
@@ -82,8 +82,8 @@ export default function AdminFragrances() {
       {msg && <div style={s.msg}>{msg}</div>}
 
       {loading ? <p style={s.muted}>Loading…</p> : (
-        <div style={s.tableWrap}>
-          <table style={s.table}>
+        <div className="admin-table-wrap" style={s.tableWrap}>
+          <table className="admin-table admin-fragrance-table" style={s.table}>
             <thead>
               <tr>
                 {['Image','Name','Category','Price','Badge','Status','Actions'].map(h => (
@@ -124,14 +124,14 @@ export default function AdminFragrances() {
 
       {/* Form modal */}
       {form && (
-        <div style={s.modalOverlay} onClick={e => e.target === e.currentTarget && setForm(null)}>
-          <div style={s.modal}>
-            <div style={s.modalHead}>
+        <div className="admin-modal-overlay" style={s.modalOverlay} onClick={e => e.target === e.currentTarget && setForm(null)}>
+          <div className="admin-modal" style={s.modal}>
+            <div className="admin-modal-head" style={s.modalHead}>
               <h2 style={s.modalTitle}>{form.id ? 'Edit Fragrance' : 'Add Fragrance'}</h2>
               <button onClick={() => setForm(null)} style={s.closeBtn}>✕</button>
             </div>
 
-            <div style={s.formGrid}>
+            <div className="admin-modal-form" style={s.formGrid}>
               {[
                 ['perfume_name','Name *','text'],
                 ['category','Category','text'],
@@ -168,7 +168,7 @@ export default function AdminFragrances() {
                   placeholder="https://… or upload below"
                   style={s.input}
                 />
-                <div style={{ marginTop:'8px', display:'flex', alignItems:'center', gap:'12px' }}>
+                <div className="admin-upload-row" style={{ marginTop:'8px', display:'flex', alignItems:'center', gap:'12px' }}>
                   <input ref={fileRef} type="file" accept="image/*" onChange={handleUpload} style={{ display:'none' }} />
                   <button onClick={() => fileRef.current?.click()} style={s.uploadBtn} disabled={uploading}>
                     {uploading ? 'Uploading…' : '↑ Upload Image'}
@@ -194,7 +194,7 @@ export default function AdminFragrances() {
               </div>
             </div>
 
-            <div style={s.modalFoot}>
+            <div className="admin-modal-foot" style={s.modalFoot}>
               <button onClick={() => setForm(null)} style={s.cancelBtn}>Cancel</button>
               <button onClick={handleSave} disabled={saving} style={s.saveBtn}>
                 {saving ? 'Saving…' : form.id ? 'Save Changes' : 'Add Fragrance'}

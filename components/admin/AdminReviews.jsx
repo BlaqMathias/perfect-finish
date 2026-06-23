@@ -59,7 +59,7 @@ export default function AdminReviews() {
 
   return (
     <div>
-      <div style={s.row}>
+      <div className="admin-section-row" style={s.row}>
         <PageHeader title="Reviews" subtitle={`${items.length} review${items.length !== 1 ? 's' : ''}`} />
         <button onClick={() => setForm({ ...EMPTY })} style={s.addBtn}>+ Add Review</button>
       </div>
@@ -67,10 +67,10 @@ export default function AdminReviews() {
       {msg && <div style={s.msg}>{msg}</div>}
 
       {loading ? <p style={s.muted}>Loading…</p> : (
-        <div style={s.cards}>
+        <div className="admin-review-grid" style={s.cards}>
           {items.map(item => (
-            <div key={item.id} style={{ ...s.card, opacity: item.approved ? 1 : 0.55 }}>
-              <div style={s.cardTop}>
+            <div className="admin-review-card" key={item.id} style={{ ...s.card, opacity: item.approved ? 1 : 0.55 }}>
+              <div className="admin-review-card-top" style={s.cardTop}>
                 <div style={s.avatar}>
                   {item.customer_image
                     ? <img src={item.customer_image} alt={item.customer_name} style={s.avatarImg} />
@@ -90,10 +90,10 @@ export default function AdminReviews() {
                   </button>
                 </div>
               </div>
-              <p style={s.reviewText}>{item.review_text}</p>
-              <div style={s.footer}>
+              <p className="admin-review-text" style={s.reviewText}>{item.review_text}</p>
+              <div className="admin-review-footer" style={s.footer}>
                 <span style={s.meta}>Sort: {item.sort_order}</span>
-                <div style={s.actionRow}>
+                <div className="admin-action-row" style={s.actionRow}>
                   <button onClick={() => setForm({ ...item })} style={s.editBtn}>Edit</button>
                   <button onClick={() => handleDelete(item.id)} style={s.delBtn}>Delete</button>
                 </div>
@@ -104,13 +104,13 @@ export default function AdminReviews() {
       )}
 
       {form && (
-        <div style={s.overlay} onClick={e => e.target === e.currentTarget && setForm(null)}>
-          <div style={s.modal}>
-            <div style={s.modalHead}>
+        <div className="admin-modal-overlay" style={s.overlay} onClick={e => e.target === e.currentTarget && setForm(null)}>
+          <div className="admin-modal" style={s.modal}>
+            <div className="admin-modal-head" style={s.modalHead}>
               <h2 style={s.modalTitle}>{form.id ? 'Edit Review' : 'Add Review'}</h2>
               <button onClick={() => setForm(null)} style={s.closeBtn}>✕</button>
             </div>
-            <div style={s.formGrid}>
+            <div className="admin-modal-form" style={s.formGrid}>
               <div style={s.field}>
                 <label style={s.label}>Customer Name *</label>
                 <input style={s.input} value={form.customer_name} onChange={e => setForm(f=>({...f,customer_name:e.target.value}))} />
@@ -146,7 +146,7 @@ export default function AdminReviews() {
                 </label>
               </div>
             </div>
-            <div style={s.modalFoot}>
+            <div className="admin-modal-foot" style={s.modalFoot}>
               <button onClick={() => setForm(null)} style={s.cancelBtn}>Cancel</button>
               <button onClick={handleSave} disabled={saving} style={s.saveBtn}>
                 {saving ? 'Saving…' : form.id ? 'Save Changes' : 'Add Review'}

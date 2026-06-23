@@ -25,14 +25,14 @@ export default function AdminDashboard({ onLogout }) {
   }
 
   return (
-    <div style={s.root}>
+    <div className="admin-root" style={s.root}>
       {/* Mobile overlay */}
       {sidebarOpen && (
-        <div style={s.overlay} onClick={() => setSidebarOpen(false)} />
+        <div className="admin-overlay" style={s.overlay} onClick={() => setSidebarOpen(false)} />
       )}
 
       {/* Sidebar */}
-      <aside style={{ ...s.sidebar, ...(sidebarOpen ? s.sidebarOpen : {}) }}>
+      <aside className={`admin-sidebar ${sidebarOpen ? 'is-open' : ''}`} style={{ ...s.sidebar, ...(sidebarOpen ? s.sidebarOpen : {}) }}>
         <div style={s.sidebarLogo}>
           <span style={s.logoMark}>PF</span>
           <span style={s.logoText}>Admin</span>
@@ -57,15 +57,15 @@ export default function AdminDashboard({ onLogout }) {
       </aside>
 
       {/* Main content */}
-      <main style={s.main}>
+      <main className="admin-main" style={s.main}>
         {/* Mobile header */}
-        <div style={s.mobileHeader}>
+        <div className="admin-mobile-header" style={s.mobileHeader}>
           <button onClick={() => setSidebarOpen(true)} style={s.menuBtn}>☰</button>
           <span style={s.mobileLogo}>PF Admin</span>
           <button onClick={handleLogout} style={s.mobileLogout}>Log Out</button>
         </div>
 
-        <div style={s.content}>
+        <div className="admin-content" style={s.content}>
           {tab === 'overview'   && <AdminOverview />}
           {tab === 'fragrances' && <AdminFragrances />}
           {tab === 'orders'     && <AdminOrders />}

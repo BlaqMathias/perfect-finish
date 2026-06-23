@@ -39,9 +39,9 @@ export default function AdminOverview() {
   return (
     <div>
       <PageHeader title="Overview" subtitle="Live statistics from your database" />
-      <div style={s.grid}>
+      <div className="admin-stats-grid" style={s.grid}>
         {cards.map(c => (
-          <div key={c.label} style={{ ...s.card, ...(c.gold ? s.cardGold : {}) }}>
+          <div className="admin-stat-card" key={c.label} style={{ ...s.card, ...(c.gold ? s.cardGold : {}) }}>
             <p style={s.cardValue}>{c.value}</p>
             <p style={s.cardLabel}>{c.label}</p>
           </div>
@@ -55,9 +55,9 @@ function Skeleton() {
   return (
     <div>
       <PageHeader title="Overview" subtitle="Loading…" />
-      <div style={s.grid}>
+      <div className="admin-stats-grid" style={s.grid}>
         {Array(6).fill(0).map((_, i) => (
-          <div key={i} style={{ ...s.card, ...s.cardSkeleton }} />
+          <div className="admin-stat-card" key={i} style={{ ...s.card, ...s.cardSkeleton }} />
         ))}
       </div>
     </div>
@@ -66,7 +66,7 @@ function Skeleton() {
 
 export function PageHeader({ title, subtitle }) {
   return (
-    <div style={s.header}>
+    <div className="admin-page-header" style={s.header}>
       <h1 style={s.h1}>{title}</h1>
       {subtitle && <p style={s.sub}>{subtitle}</p>}
     </div>

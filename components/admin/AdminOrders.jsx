@@ -56,7 +56,7 @@ export default function AdminOrders() {
       {msg && <div style={s.msg}>{msg}</div>}
 
       {/* Filter tabs */}
-      <div style={s.filters}>
+      <div className="admin-order-filters" style={s.filters}>
         {['all', ...STATUSES].map(f => (
           <button
             key={f}
@@ -74,8 +74,8 @@ export default function AdminOrders() {
       {loading ? <p style={s.muted}>Loading…</p> : visible.length === 0 ? (
         <p style={s.muted}>No orders found.</p>
       ) : (
-        <div style={s.tableWrap}>
-          <table style={s.table}>
+        <div className="admin-table-wrap" style={s.tableWrap}>
+          <table className="admin-table admin-orders-table" style={s.table}>
             <thead>
               <tr>
                 {['Reference','Customer','Fragrance','Size','Qty','Total','Status','Action'].map(h => (
@@ -129,13 +129,13 @@ export default function AdminOrders() {
 
       {/* Detail panel */}
       {detail && (
-        <div style={s.overlay} onClick={e => e.target === e.currentTarget && setDetail(null)}>
-          <div style={s.panel}>
-            <div style={s.panelHead}>
+        <div className="admin-panel-overlay" style={s.overlay} onClick={e => e.target === e.currentTarget && setDetail(null)}>
+          <div className="admin-side-panel" style={s.panel}>
+            <div className="admin-panel-head" style={s.panelHead}>
               <h3 style={s.panelTitle}>{detail.order_reference}</h3>
               <button onClick={() => setDetail(null)} style={s.closeBtn}>✕</button>
             </div>
-            <div style={s.panelBody}>
+            <div className="admin-panel-body" style={s.panelBody}>
               <Section label="Customer">
                 <Row label="Name"    value={`${detail.first_name} ${detail.last_name}`} />
                 <Row label="Phone"   value={detail.phone} />
@@ -179,7 +179,7 @@ function Section({ label, children }) {
 
 function Row({ label, value }) {
   return (
-    <div style={{ display:'flex', gap:'12px', padding:'6px 0', borderBottom:'1px solid rgba(255,255,255,0.04)', fontSize:'0.83rem' }}>
+    <div className="admin-detail-row" style={{ display:'flex', gap:'12px', padding:'6px 0', borderBottom:'1px solid rgba(255,255,255,0.04)', fontSize:'0.83rem' }}>
       <span style={{ color:'#7a7770', minWidth:'80px' }}>{label}</span>
       <span style={{ color:'#f5f0e8', flex:1 }}>{value}</span>
     </div>

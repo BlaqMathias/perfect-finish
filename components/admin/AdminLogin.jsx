@@ -32,8 +32,8 @@ export default function AdminLogin({ onSuccess }) {
   }
 
   return (
-    <div style={s.page}>
-      <div style={s.card}>
+    <div className="admin-login-page" style={s.page}>
+      <div className="admin-login-card" style={s.card}>
         <p style={s.mark}>PF</p>
         <h1 style={s.title}>Perfect Finish</h1>
         <p style={s.sub}>Admin Dashboard</p>
