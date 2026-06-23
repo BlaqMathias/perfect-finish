@@ -90,7 +90,7 @@ export async function POST(request) {
     const { data: inserted, error: insertError } = await supabase
       .from('orders')
       .insert({
-        order_reference: `PF-TEMP-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`, 
+        order_reference: `TMP-${Date.now()}`, 
         first_name:      firstName,
         last_name:       lastName,
         email:           email || null,
