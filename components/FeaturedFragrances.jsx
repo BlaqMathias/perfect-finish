@@ -32,7 +32,7 @@ export default function FeaturedFragrances() {
   const [error,    setError]    = useState(false);
 
   useEffect(() => {
-    fetch('/api/perfumes')
+    fetch('/api/perfumes', { cache: 'no-store' })
       .then(r => r.json())
       .then(data => {
         if (Array.isArray(data) && data.length > 0) {

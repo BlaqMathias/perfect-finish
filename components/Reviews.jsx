@@ -10,7 +10,7 @@ export default function Reviews() {
   const touchStart = useRef(0);
 
   useEffect(() => {
-    fetch('/api/reviews')
+    fetch('/api/reviews', { cache: 'no-store' })
       .then(r => r.json())
       .then(data => {
         if (Array.isArray(data) && data.length > 0) setReviews(data);

@@ -3,9 +3,13 @@
 // Validates, calculates server-side total, saves order, returns order reference.
 
 import { NextResponse } from 'next/server';
+import { jsonNoStore }  from '@/lib/noStore';
 import { supabase }     from '@/lib/supabase';
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+export const fetchCache = 'force-no-store';
+export const runtime = 'nodejs';
 
 const SIZE_MULTIPLIERS = { '30ml': 1.0, '50ml': 1.5, '100ml': 2.2 };
 const VALID_SIZES      = Object.keys(SIZE_MULTIPLIERS);
@@ -26,7 +30,7 @@ export async function POST(request) {
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json(
+    return jsonNoStore(
       { success: false, message: 'Invalid request body.' },
       { status: 400 }
     );
@@ -56,7 +60,7 @@ export async function POST(request) {
   if (email && !isValidEmail(email))      errors.push('Please enter a valid email address.');
 
   if (errors.length > 0) {
-    return NextResponse.json(
+    return jsonNoStore(
       { success: false, message: errors[0] },
       { status: 422 }
     );
@@ -86,7 +90,7 @@ export async function POST(request) {
     const { data: inserted, error: insertError } = await supabase
       .from('orders')
       .insert({
-        order_reference: 'PF-TEMP',
+        order_reference: `PF-TEMP-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`, 
         first_name:      firstName,
         last_name:       lastName,
         email:           email || null,
@@ -120,7 +124,7 @@ export async function POST(request) {
     // 6. Return success
     const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '2347084657676';
 
-    return NextResponse.json({
+    return jsonNoStore({
       success:         true,
       order_reference: reference,
       first_name:      firstName,
@@ -138,7 +142,7 @@ export async function POST(request) {
 
   } catch (err) {
     console.error('[POST /api/orders]', err.message);
-    return NextResponse.json(
+    return jsonNoStore(
       {
         success: false,
         message: 'We could not process your order. Please try again or contact us on WhatsApp.',
