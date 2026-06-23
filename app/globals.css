@@ -197,9 +197,9 @@ ul { list-style: none; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
-  background: var(--gold);
+  width: 45px;
+  height: 45px;
+  background: none;
   color: var(--black);
   font-family: var(--font-display);
   font-size: 0.8rem;
@@ -1941,16 +1941,16 @@ body.pf-loading {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 52px;
-  height: 52px;
-  background: var(--gold);
+  width: 90px;
+  height: 90px;
+  background: none;
   color: #080705;
   font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   border-radius: 6px;
-  box-shadow: 0 0 30px rgba(201,168,76,0.35);
+  /* box-shadow: 0 0 30px rgba(201,168,76,0.35); */
 }
 
 .pf-loader__brand {

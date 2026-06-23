@@ -34,7 +34,13 @@ export default function AdminDashboard({ onLogout }) {
       {/* Sidebar */}
       <aside className={`admin-sidebar ${sidebarOpen ? 'is-open' : ''}`} style={{ ...s.sidebar, ...(sidebarOpen ? s.sidebarOpen : {}) }}>
         <div style={s.sidebarLogo}>
-          <span style={s.logoMark}>PF</span>
+          <span style={s.logoMark}>
+            <img
+              src="/images/logo.png"
+              alt="Perfect Finish Logo"
+              style={s.logoImg}
+            />
+          </span>
           <span style={s.logoText}>Admin</span>
         </div>
 
@@ -61,7 +67,14 @@ export default function AdminDashboard({ onLogout }) {
         {/* Mobile header */}
         <div className="admin-mobile-header" style={s.mobileHeader}>
           <button onClick={() => setSidebarOpen(true)} style={s.menuBtn}>☰</button>
-          <span style={s.mobileLogo}>PF Admin</span>
+          <span style={s.mobileLogo}>
+            <img
+              src="/images/logo.png"
+              alt="Perfect Finish Logo"
+              style={s.mobileLogoImg}
+            />
+            <span>Admin</span>
+          </span>
           <button onClick={handleLogout} style={s.mobileLogout}>Log Out</button>
         </div>
 
@@ -82,8 +95,29 @@ const s = {
   sidebar:      { width:'220px', flexShrink:0, background:'#161410', borderRight:'1px solid rgba(201,168,76,0.12)', display:'flex', flexDirection:'column', padding:'0', position:'sticky', top:0, height:'100vh', zIndex:50, transition:'transform 0.3s' },
   sidebarOpen:  { '@media(max-width:768px)': { transform:'translateX(0)' } },
   sidebarLogo:  { padding:'32px 24px 24px', display:'flex', alignItems:'center', gap:'10px', borderBottom:'1px solid rgba(201,168,76,0.1)' },
-  logoMark:     { fontFamily:'"Cormorant Garamond",serif', fontSize:'1.6rem', fontStyle:'italic', color:'#c9a84c', letterSpacing:'0.1em' },
-  logoText:     { fontSize:'0.68rem', letterSpacing:'0.2em', textTransform:'uppercase', color:'#7a7770', marginTop:'2px' },
+    logoMark: {
+    width: '38px',
+    height: '38px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+  },
+
+  logoImg: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'contain',
+    display: 'block',
+  },
+
+  logoText: {
+    fontSize: '0.68rem',
+    letterSpacing: '0.2em',
+    textTransform: 'uppercase',
+    color: '#7a7770',
+    marginTop: '2px',
+  },
   nav:          { flex:1, padding:'20px 12px', display:'flex', flexDirection:'column', gap:'4px' },
   navBtn:       { width:'100%', padding:'11px 14px', background:'transparent', border:'none', borderRadius:'6px', color:'#9e9a93', fontSize:'0.82rem', fontWeight:400, letterSpacing:'0.06em', cursor:'pointer', textAlign:'left', transition:'all 0.2s', fontFamily:'"Poppins",sans-serif' },
   navBtnActive: { background:'rgba(201,168,76,0.1)', color:'#c9a84c', fontWeight:500 },
@@ -93,7 +127,24 @@ const s = {
   main:         { flex:1, display:'flex', flexDirection:'column', minWidth:0 },
   mobileHeader: { display:'none', padding:'16px 20px', background:'#161410', borderBottom:'1px solid rgba(201,168,76,0.12)', alignItems:'center', justifyContent:'space-between' },
   menuBtn:      { background:'none', border:'none', color:'#c9a84c', fontSize:'1.3rem', cursor:'pointer' },
-  mobileLogo:   { fontFamily:'"Cormorant Garamond",serif', fontStyle:'italic', color:'#c9a84c', fontSize:'1.1rem', letterSpacing:'0.1em' },
+    mobileLogo: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    fontFamily: '"Cormorant Garamond",serif',
+    fontStyle: 'italic',
+    color: '#c9a84c',
+    fontSize: '1.1rem',
+    letterSpacing: '0.1em',
+  },
+
+  mobileLogoImg: {
+    width: '30px',
+    height: '30px',
+    objectFit: 'contain',
+    display: 'block',
+    flexShrink: 0,
+  },
   mobileLogout: { background:'none', border:'1px solid rgba(201,168,76,0.2)', borderRadius:'4px', color:'#9e9a93', fontSize:'0.7rem', padding:'6px 10px', cursor:'pointer', fontFamily:'inherit' },
   content:      { padding:'40px', flex:1 },
 };

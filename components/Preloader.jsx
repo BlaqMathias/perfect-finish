@@ -88,7 +88,7 @@ export default function Preloader() {
   return (
     <div id="pf-loader" className="pf-loader" aria-live="polite" aria-label="Loading Perfect Finish">
       <div className="pf-loader__inner">
-        <span className="pf-loader__pf">PF</span>
+        <span className="pf-loader__pf"><img src="/images/logo.png"/></span>
         <div className="pf-loader__logo">
           <span className="pf-loader__brand">Perfect Finish</span>
         </div>

@@ -34,7 +34,13 @@ export default function AdminLogin({ onSuccess }) {
   return (
     <div className="admin-login-page" style={s.page}>
       <div className="admin-login-card" style={s.card}>
-        <p style={s.mark}>PF</p>
+        <div style={s.loginLogoWrap}>
+          <img
+            src="/images/logo.png"
+            alt="Perfect Finish Logo"
+            style={s.loginLogoImg}
+          />
+        </div>
         <h1 style={s.title}>Perfect Finish</h1>
         <p style={s.sub}>Admin Dashboard</p>
 
@@ -69,4 +75,19 @@ const s = {
   input: { padding:'12px 16px', background:'#1e1a13', border:'1px solid rgba(201,168,76,0.2)', borderRadius:'6px', color:'#f5f0e8', fontSize:'0.95rem', outline:'none', fontFamily:'inherit', width:'100%' },
   error: { fontSize:'0.8rem', color:'#e57373', margin:'0' },
   btn:   { marginTop:'8px', padding:'14px', background:'linear-gradient(135deg,#9a7730,#c9a84c)', border:'none', borderRadius:'6px', color:'#0f0d09', fontSize:'0.85rem', fontWeight:600, letterSpacing:'0.12em', textTransform:'uppercase', cursor:'pointer' },
+    loginLogoWrap: {
+    width: '90px',
+    height: '90px',
+    margin: '0 auto 18px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  loginLogoImg: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'contain',
+    display: 'block',
+  },
 };

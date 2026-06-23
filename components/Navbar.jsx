@@ -48,7 +48,7 @@ export default function Navbar() {
     <nav id="navbar">
       <div className="nav-inner">
         <a href="#home" className="logo">
-          <span className="logo-pf">PF</span>
+          <span className="logo-pf"><img src="/images/logo.png"/></span>
           <span className="logo-text">Perfect Finish</span>
         </a>
 
